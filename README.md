@@ -276,6 +276,31 @@ npm run test:smoke
 npm run test:debug
 ```
 
+### HTML Test Reports
+
+Generate comprehensive HTML test reports with interactive charts, embedded screenshots, and detailed test results:
+
+```bash
+# Generate HTML report (excludes security tests for faster execution)
+npm run test:report
+
+# Generate complete HTML report (includes all tests)
+npm run test:report:all
+
+# Generate report and automatically open in browser (macOS)
+npm run test:report:open
+```
+
+**Report Features:**
+
+- Interactive pass/fail charts and statistics
+- Embedded screenshots for failed tests
+- Test execution timeline and performance metrics
+- Search and filter capabilities
+- Professional styling with detailed test breakdown
+
+**Report Location:** `cypress/reports/index.html`
+
 ## Test Suite Overview
 
 ### 1. Login Flow Tests (`01-login-flow.cy.js`)
@@ -528,3 +553,4 @@ For questions about test implementation, debugging, or extending the test suite:
 3. **Debugging**: Use `npm run test:debug` for focused troubleshooting
 4. **Cypress Documentation**: [Official Cypress Documentation](https://docs.cypress.io/)
 5. **Test Results**: Screenshots and videos automatically captured in `cypress/screenshots/` and `cypress/videos/`
+6. **HTML Reports**: Generate comprehensive test reports with `npm run test:report` - results available at `cypress/reports/index.html`

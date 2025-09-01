@@ -53,6 +53,9 @@ export default defineConfig({
       // Add cypress-grep plugin
       require('@cypress/grep/src/plugin')(config);
       
+      // Add mochawesome reporter plugin
+      require('cypress-mochawesome-reporter/plugin')(on);
+      
       // Example: Add custom tasks
       on('task', {
         log(message) {
@@ -70,6 +73,20 @@ export default defineConfig({
       });
       
       return config;
+    },
+    
+    // Configure mochawesome reporter
+    reporter: 'cypress-mochawesome-reporter',
+    reporterOptions: {
+      charts: true,
+      reportPageTitle: 'Classavo Test Results',
+      embeddedScreenshots: true,
+      inlineAssets: true,
+      saveAllAttempts: false,
+      reportDir: 'cypress/reports',
+      overwrite: false,
+      html: true,
+      json: true
     },
   },
   

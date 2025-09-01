@@ -20,6 +20,9 @@
     "test:security:fast": "cypress run --spec 'cypress/e2e/06-security-tests.cy.js' --env RUN_SECURITY_TESTS=true,SECURITY_SAMPLE_ONLY=true",
     "test:chrome": "cypress run --browser chrome --spec 'cypress/e2e/!(06-security-tests).cy.js'",
     "test:firefox": "cypress run --browser firefox --spec 'cypress/e2e/!(06-security-tests).cy.js'",
+    "test:report": "cypress run --spec 'cypress/e2e/!(06-security-tests).cy.js' && echo 'HTML report generated at cypress/reports/index.html'",
+    "test:report:all": "cypress run && echo 'HTML report generated at cypress/reports/index.html'",
+    "test:report:open": "cypress run --spec 'cypress/e2e/!(06-security-tests).cy.js' && open cypress/reports/index.html",
     "serve": "python3 -m http.server 3000",
     "serve:alt": "npx http-server -p 3000"
   },
@@ -35,7 +38,8 @@
   "license": "MIT",
   "devDependencies": {
     "@cypress/grep": "^4.1.1",
-    "cypress": "^15.0.0"
+    "cypress": "^15.0.0",
+    "cypress-mochawesome-reporter": "^4.0.2"
   },
   "optionalDependencies": {
     "http-server": "^14.1.1"

@@ -22,8 +22,8 @@
 import { LoginPage } from '../support/pages';
 
 // Skip security tests unless explicitly enabled
-const runSecurityTests = Cypress.env('RUN_SECURITY_TESTS') === 'true';
-const fastMode = Cypress.env('SECURITY_SAMPLE_ONLY') === 'true';
+const runSecurityTests = Cypress.env('RUN_SECURITY_TESTS') === 'true' || Cypress.env('RUN_SECURITY_TESTS') === true;
+const fastMode = Cypress.env('SECURITY_SAMPLE_ONLY') === 'true' || Cypress.env('SECURITY_SAMPLE_ONLY') === true;
 
 (runSecurityTests ? describe : describe.skip)('Security Testing', () => {
   let users, courses, securityPayloads;
