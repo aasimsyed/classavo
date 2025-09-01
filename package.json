@@ -1,0 +1,43 @@
+{
+  "name": "classavo",
+  "version": "1.0.0",
+  "description": "Classavo Student Platform - E2E Testing with Cypress",
+  "main": "index.html",
+  "scripts": {
+    "test": "cypress run --spec 'cypress/e2e/!(06-security-tests).cy.js'",
+    "test:fast": "cypress run --spec 'cypress/e2e/!(06-security-tests).cy.js' --headless",
+    "test:single": "cypress run --spec 'cypress/e2e/01-login-flow.cy.js'",
+    "test:all": "cypress run",
+    "test:open": "cypress open",
+    "test:smoke": "cypress run --env grepTags='@smoke'",
+    "test:smoke:open": "cypress open --env grepTags='@smoke'",
+    "test:critical": "cypress run --env grepTags='@critical'",
+    "test:ui": "cypress run --env grepTags='@ui'",
+    "test:debug": "cypress run --env grepTags='@debug'",
+    "test:debug:open": "cypress open --env grepTags='@debug'",
+    "test:security": "cypress run --spec 'cypress/e2e/06-security-tests.cy.js' --env RUN_SECURITY_TESTS=true",
+    "test:security:open": "cypress open --env RUN_SECURITY_TESTS=true",
+    "test:security:fast": "cypress run --spec 'cypress/e2e/06-security-tests.cy.js' --env RUN_SECURITY_TESTS=true,SECURITY_SAMPLE_ONLY=true",
+    "test:chrome": "cypress run --browser chrome --spec 'cypress/e2e/!(06-security-tests).cy.js'",
+    "test:firefox": "cypress run --browser firefox --spec 'cypress/e2e/!(06-security-tests).cy.js'",
+    "serve": "python3 -m http.server 3000",
+    "serve:alt": "npx http-server -p 3000"
+  },
+  "keywords": [
+    "education",
+    "student",
+    "platform",
+    "e2e",
+    "testing",
+    "cypress"
+  ],
+  "author": "Classavo Team",
+  "license": "MIT",
+  "devDependencies": {
+    "@cypress/grep": "^4.1.1",
+    "cypress": "^15.0.0"
+  },
+  "optionalDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

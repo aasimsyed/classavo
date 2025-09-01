@@ -1,0 +1,22 @@
+{
+  "validUser": {
+    "email": "student@classavo.com",
+    "password": "password123"
+  },
+  "unverifiedUser": {
+    "email": "unverified@classavo.com",
+    "password": "password123"
+  },
+  "newUser": {
+    "email": "newstudent@classavo.com",
+    "password": "password123"
+  },
+  "invalidUser": {
+    "email": "nonexistent@classavo.com",
+    "password": "wrongpassword"
+  },
+  "invalidCredentials": {
+    "email": "student@classavo.com",
+    "password": "wrongpassword"
+  }
+}

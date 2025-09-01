@@ -1,0 +1,44 @@
+{
+  "validCourse": {
+    "code": "CS101",
+    "password": "intro2023",
+    "title": "Introduction to Computer Science",
+    "description": "Learn the fundamentals of programming and computer science."
+  },
+  "secondValidCourse": {
+    "code": "MATH201",
+    "password": "calculus",
+    "title": "Calculus II",
+    "description": "Advanced calculus topics including integration techniques."
+  },
+  "invalidCourse": {
+    "code": "INVALID",
+    "password": "wrongpassword"
+  },
+  "invalidPassword": {
+    "code": "CS101",
+    "password": "wrongpassword"
+  },
+  "emptyFields": {
+    "code": "",
+    "password": ""
+  },
+  "fullCourse": {
+    "code": "FULL101",
+    "password": "fullcourse",
+    "title": "Full Course",
+    "description": "A course that has reached maximum capacity."
+  },
+  "closedCourse": {
+    "code": "CLOSED101",
+    "password": "closedcourse",
+    "title": "Closed Course",
+    "description": "A course with closed enrollment."
+  },
+  "archivedCourse": {
+    "code": "ARCH101",
+    "password": "archived",
+    "title": "Archived Course",
+    "description": "A course that has been archived."
+  }
+}
