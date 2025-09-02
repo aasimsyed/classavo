@@ -149,59 +149,24 @@ Cypress.Commands.add('verifyAppState', (stateType, expectedValue = null) => {
 });
 
 /**
- * Custom command for keyboard tab navigation
- * Handles multiple page contexts: course join form and dashboard
+ * Custom command for keyboard tab navigation using native cy.press()
+ * Uses Cypress v14.3.0+ native Tab key support for more accurate browser behavior
+ * 
+ * This command leverages cy.press(Cypress.Keyboard.Keys.TAB) which dispatches
+ * native keyboard events (keydown, press, keyup) directly to the browser,
+ * allowing the browser's natural tab navigation to work as expected.
  */
 Cypress.Commands.add('tab', { prevSubject: 'element' }, (subject) => {
-  return cy.wrap(subject).invoke('attr', 'data-cy').then((currentDataCy) => {
-    // Determine context and tab order based on current page
-    return cy.get('body').then(() => {
-      let tabOrder = [];
-      let context = '';
-      
-      // Check if we're on course join page
-      if (Cypress.$('#courseJoinForm:visible').length > 0) {
-        tabOrder = ['course-code-input', 'course-password-input', 'join-course-button'];
-        context = 'course-join';
-      }
-      // Check if we're on dashboard page
-      else if (Cypress.$('#courseDashboard:visible').length > 0) {
-        tabOrder = ['start-course-button'];
-        context = 'dashboard';
-      }
-      
-      // If starting from body or undefined, go to first element
-      let currentIndex = currentDataCy ? tabOrder.indexOf(currentDataCy) : -1;
-      let nextIndex = currentIndex + 1;
-      
-      // If not found in current context or at end, go to first element
-      if (currentIndex === -1 || nextIndex >= tabOrder.length) {
-        nextIndex = 0;
-      }
-      
-      if (nextIndex < tabOrder.length) {
-        const nextSelector = `[data-cy="${tabOrder[nextIndex]}"]`;
-        cy.log(`Tabbing from ${currentDataCy || 'body'} to ${tabOrder[nextIndex]} (${context})`);
-        
-        // Trigger the tab event first
-        cy.wrap(subject).trigger('keydown', { keyCode: 9, which: 9, key: 'Tab', code: 'Tab' });
-        
-        // Use direct DOM manipulation to set focus
-        return cy.get(nextSelector).then(($el) => {
-          // Use the native DOM focus method
-          $el[0].focus();
-          
-          // Trigger focus and focusin events to ensure proper event handling
-          $el.trigger('focus');
-          $el.trigger('focusin');
-          
-          return cy.wrap($el);
-        });
-      } else {
-        cy.log(`No focusable elements found in ${context} context`);
-        return cy.wrap(subject);
-      }
-    });
+  cy.log('Pressing Tab key using native cy.press() for natural browser navigation');
+  
+  // Use the new native cy.press() method introduced in Cypress v14.3.0
+  // This dispatches real Tab key events, letting the browser handle focus naturally
+  return cy.wrap(subject).then(() => {
+    cy.press(Cypress.Keyboard.Keys.TAB);
+    
+    // Return the currently focused element after tab navigation
+    // This maintains chainability and allows tests to verify the focused element
+    return cy.focused();
   });
 });
 
