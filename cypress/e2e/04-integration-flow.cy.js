@@ -21,7 +21,7 @@ describe('End-to-End Integration Flow', () => {
   });
 
   describe('Core User Journey', () => {
-    it('should complete the entire user flow from login to course start', () => {
+    it('should complete the entire user flow from login to course start', { tags: '@smoke' }, () => {
       // Step 1: Login
       LoginPage.verifyElements();
       LoginPage.login(users.validUser.email, users.validUser.password);
@@ -76,7 +76,7 @@ describe('End-to-End Integration Flow', () => {
       cy.get('@alertStub').should('have.been.called');
     });
 
-    it('should maintain proper state throughout the entire flow', () => {
+    it('should maintain proper state throughout the entire flow', { tags: '@smoke' }, () => {
       // Initial state should be clean
       cy.verifyAppState('user', null);
       cy.verifyAppState('currentCourse', null);

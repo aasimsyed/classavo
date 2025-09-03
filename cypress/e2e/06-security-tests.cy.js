@@ -194,7 +194,7 @@ const fastMode = Cypress.env('SECURITY_SAMPLE_ONLY') === 'true' || Cypress.env('
       { desc: 'unicode bypass', email: 'admin\u202e@test.com', password: 'password123' }
     ];
 
-    it('should prevent authentication bypass attempts', () => {
+    it('should prevent authentication bypass attempts', { tags: '@smoke' }, () => {
       authBypassPayloads.forEach(({ desc, email, password, expectInvalid }) => {
         cy.resetApp();
         cy.get('[data-cy="email-input"]').type(email);
@@ -236,7 +236,7 @@ const fastMode = Cypress.env('SECURITY_SAMPLE_ONLY') === 'true' || Cypress.env('
   });
 
   describe('Data Protection and Privacy', () => {
-    it('should protect sensitive data and clear forms properly', () => {
+    it('should protect sensitive data and clear forms properly', { tags: '@smoke' }, () => {
       // Verify password field security
       cy.get('[data-cy="password-input"]').should('have.attr', 'type', 'password');
       

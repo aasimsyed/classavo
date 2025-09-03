@@ -22,7 +22,7 @@ describe('Course Join Flow', { tags: ['@course-join'] }, () => {
   });
 
   describe('Page Load and UI Elements', () => {
-    it('should display the course join form with all required elements', () => {
+    it('should display the course join form with all required elements', { tags: '@smoke' }, () => {
       CourseJoinPage.verifyElements();
 
       // Verify form labels
@@ -118,7 +118,7 @@ describe('Course Join Flow', { tags: ['@course-join'] }, () => {
   describe('Invalid Course Credentials', () => {
     it(
       'should show error for non-existent course',
-      { tags: ['@critical'] },
+      { tags: ['@smoke', '@critical'] },
       () => {
         CourseJoinPage.joinCourse(
           courses.invalidCourse.code,

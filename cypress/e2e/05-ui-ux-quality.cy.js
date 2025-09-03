@@ -21,7 +21,7 @@ describe('UI/UX Quality and User Experience', () => {
   });
 
   describe('Loading States and User Feedback', () => {
-    it('should show loading state during login', () => {
+    it('should show loading state during login', { tags: '@smoke' }, () => {
       LoginPage.fillCredentials(users.validUser.email, users.validUser.password);
       LoginPage.submit();
       
@@ -85,7 +85,7 @@ describe('UI/UX Quality and User Experience', () => {
   });
 
   describe('Visual Design and Layout', () => {
-    it('should have consistent visual hierarchy', () => {
+    it('should have consistent visual hierarchy', { tags: '@smoke' }, () => {
       // Check login page hierarchy
       LoginPage.verifyElements();
       

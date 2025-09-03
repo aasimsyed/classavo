@@ -78,7 +78,7 @@ describe('Login Flow', () => {
   });
 
   describe('Invalid Credentials', () => {
-    it('should show error for non-existent user', { tags: '@critical' }, () => {
+    it('should show error for non-existent user', { tags: ['@smoke', '@critical'] }, () => {
       LoginPage.login(users.invalidUser.email, users.invalidUser.password);
 
       // Verify error message

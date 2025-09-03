@@ -28,7 +28,7 @@ describe('Course Dashboard', () => {
   });
 
   describe('Dashboard Layout and Content', () => {
-    it('should display course dashboard with correct elements', () => {
+    it('should display course dashboard with correct elements', { tags: '@smoke' }, () => {
       DashboardPage.verifyElements(courses.validCourse);
       DashboardPage.verifyLoadingState();
     });
@@ -60,7 +60,7 @@ describe('Course Dashboard', () => {
   });
 
   describe('Course Loading Process', () => {
-    it('should complete loading process and show start button', () => {
+    it('should complete loading process and show start button', { tags: '@smoke' }, () => {
       DashboardPage.waitForContentLoad();
 
       // Verify start course button becomes visible
@@ -112,7 +112,7 @@ describe('Course Dashboard', () => {
       DashboardPage.waitForContentLoad();
     });
 
-    it('should successfully start course', () => {
+    it('should successfully start course', { tags: '@smoke' }, () => {
       // Mock confirm and alert for course start
       cy.window().then((win) => {
         cy.stub(win, 'confirm').returns(true).as('confirmDialog');
